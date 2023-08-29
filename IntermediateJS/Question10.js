@@ -33,7 +33,7 @@ const days = Math.floor(hours / 24) //15994 days
 const months = Math.floor(days / 30) //533 month
 const years = Math.floor(days / 365) //43 years
 
-const actualDaysOfYears = years * 365; //15695 days
+const actualDaysOfYears = years * 365; //15695 days as of 29/08/2023
 const remainderDaysAfterSubtractingYears = days - actualDaysOfYears; //299 days
 const remainderDaysInMonth = Math.floor(remainderDaysAfterSubtractingYears / 30); //9 months
 const remainderDaysAfterSubtractingMonths = remainderDaysAfterSubtractingYears - remainderDaysInMonth * 30; //29 days
