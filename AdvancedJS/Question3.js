@@ -21,16 +21,16 @@ setTimeout(printMe, 300);
 // a) Create a debounce(func) decorator, which is a wrapper that takes a function func and suspends calls to func until there's 1000 milliseconds of inactivity. After this 1 second pause, the most recent call to func should be executed and any others ignored.
 
 function debounce(func) {
-    let timeout;
+    let timeout; // this is private variable only avaialble through closure
     // console.log(this);
     // console.log(func);
     // console.log(`first load timeout variable ${timeout}`)
-    return function () {
+    return function () { //handler
         //console.log(`second load timeout variable ${timeout}`)
-        if (timeout) {
-            clearTimeout(timeout)
+        if (timeout) { //if there is timeout with value exists, it clears out, which ends up running first function.
+            clearTimeout(timeout);
         }
-        timeout = setTimeout(() => func.apply(this, null), 1000)
+        timeout = setTimeout(() => func.apply(this, null), 1000);
     }
 }
 
