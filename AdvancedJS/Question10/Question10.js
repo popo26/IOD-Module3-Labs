@@ -23,7 +23,6 @@ fetchURLData('https://jsonplaceholder.typicode.com/todos/1')
 // a) Write a new version of this function using async/await
 
 async function fetchURLData2(url) {
-
     try {
         const response = await fetch(url)
         const json = await response.json()

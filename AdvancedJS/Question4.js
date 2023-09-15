@@ -38,9 +38,9 @@ function Fibo() {
 }
 
 const result = Fibo();
-// printFibonacci(result)
+//printFibonacci(result)
 
-// //generate infinite Fibo number
+// //generate infinite Fibo number - Is it possible?
 // function FiboInfinate() {
 //     let counter = 0;
 //     let arr = [];
@@ -65,6 +65,8 @@ const result = Fibo();
 // }
 
 // const result2 = FiboInfinate();
+// printFibonacci(result2)
+
 
 // b) Write a new version printFibonacciTimeouts() that uses nested setTimeout calls to do the same thing
 
@@ -91,6 +93,7 @@ function printFibonacciTimeoutsLimit(arr, limit) {
             if (index < limit) {
                 setTimeout(repeatThis, 1000, index++)
             }
+            //if limit is bigger than array length printing stops at the array length
         } else if (limit > arr.length) {
             if (index < arr.length) {
                 setTimeout(repeatThis, 1000, index++)
@@ -100,4 +103,4 @@ function printFibonacciTimeoutsLimit(arr, limit) {
     }, 1000, index);
 }
 
-//printFibonacciTimeoutsLimit(result, 3)
+printFibonacciTimeoutsLimit(result, 3)

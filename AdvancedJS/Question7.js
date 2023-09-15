@@ -12,9 +12,10 @@ function Person(name, age, gender) {
     this.name = name;
     this.age = age;
     this.gender = gender;
+    // Ai:This was mistake because it is changing the toString method of Object itself(Ai wants to keep this as reference).
     // Object.prototype.toString = function () {
     //     return `This is ${this.name}, ${this.age} years old, and ${this.gender}`;
-    //} This was mistake because it is changing the toString method for Object itself.
+    //} 
 }
 
 const person1 = new Person('James Brown', 73, 'male')
@@ -26,12 +27,12 @@ Person.prototype.toString = function personToString() {
     return `This is ${this.name}, ${this.age} years old, and ${this.gender}`;
 }
 
-console.log("\r\n-----------------After creationg of custom toString method for Person object-----------------")
+console.log("\r\n-----------------After creating custom toString method for Person object-----------------")
 console.log(person1.toString()) //Without string, it just shows whole object. Person { name: 'James Brown', age: 73, gender: 'male' }
 
-console.log("-----------------'person1: ' + person1-----------------")
+console.log("\r\n-----------------'person1: ' + person1-----------------")
 console.log('person1: ' + person1)
-console.log("-----------------person1-----------------")
+console.log("\r\n-----------------person1-----------------")
 console.log(person1)
 
 // b) Test your method by creating 2 different people using the below constructor function and printing them
@@ -41,10 +42,10 @@ console.log("\r\n-----------------Test of 2 more Person objects-----------------
 const person2 = new Person('Ai Oakenfull', 50, 'female');
 const person3 = new Person('Kewpie Oake', 20, 'male');
 
-console.log("-----------------'person2.toString()' & 'person3.toString()'-----------------")
+console.log("\r\n-----------------'person2.toString()' & 'person3.toString()'-----------------")
 console.log(person2.toString());
 console.log(person3.toString());
-console.log("-----------------'person2' & 'person3'-----------------")
+console.log("\r\n-----------------'person2' & 'person3'-----------------")
 console.log(person2);
 console.log(person3);
 
@@ -54,9 +55,10 @@ console.log(person3);
 function Student(name, age, gender) {
     Person.call(this, name, age, gender);
     this.cohort = true;
+    // Ai:This was mistake because it is changing the toString method of Object itself(Ai wants to keep this as reference).
     // Object.prototype.toString = function () {
     //     return `${this.name} is a student. ${this.age} years old and ${this.gender}. Cohort: ${this.cohort}`
-    //} This was mistake because it is changing the toString method for Object itself.
+    //} 
 }
 
 Student.prototype.toString = function studentToString() {
@@ -70,7 +72,7 @@ const student2 = new Student("Tory Smith", 14, 'female');
 
 // d) Add a custom toString for Student objects that formats and prints their details. Test with 2 students.
 
-console.log("\r\n--------After creationg of custom toString method for Student object-----")
+console.log("\r\n--------After creating custom toString method for Student object-----")
 console.log(student1.toString())
 console.log(student2.toString())
 console.log("\r\n-----------------student1 & student2-----------------")

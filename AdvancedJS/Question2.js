@@ -24,7 +24,7 @@ const delayMsg2 = (msg) => console.log(`This message will be printed after a del
 
 // c) Add a fifth test which uses a large delay time (greater than 10 seconds) 
 
-//setTimeout(delayMsg, 12000, '#5: Delayed by 12000ms');
+setTimeout(delayMsg, 12000, '#5: Delayed by 12000ms');
 
 // d) Use clearTimeout to prevent the fifth test from printing at all.
 
