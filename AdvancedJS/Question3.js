@@ -22,6 +22,19 @@ setTimeout(printMe, 300);
 
 function debounce(func) {
     let timeout; // this is private variable only avaialble through closure
+    return function () { //handler
+        if (timeout) { //if there is timeout with value exists, it clears out, which ends up running first function.
+            clearTimeout(timeout);
+        }
+        timeout = setTimeout(func, 1000);
+    }
+}
+
+/*
+//From Line36 to Line48 - Ai keeps this as a reminder: In this logic, I used apply() at Line45, but it is not doing anything because apply() doesn't have any context to use.
+
+function debounce(func) {
+    let timeout; // this is private variable only avaialble through closure
     // console.log(this);
     // console.log(func);
     // console.log(`first load timeout variable ${timeout}`)
@@ -30,19 +43,20 @@ function debounce(func) {
         if (timeout) { //if there is timeout with value exists, it clears out, which ends up running first function.
             clearTimeout(timeout);
         }
-        timeout = setTimeout(() => func.apply(this, null), 1000);
+        timeout = setTimeout(() => func.apply(null, null), 1000);
     }
 }
+*/
 
 
 // b) Extend the debounce decorator function to take a second argument ms, which defines the length of the period of inactivity instead of hardcoding to 1000ms
 
 function debounce2(func, ms) {
     let timeout;
-    return function (...args) {
+    return function () {
         const context = this;
         clearTimeout(timeout);
-        timeout = setTimeout(() => func.apply(context, args), ms)
+        timeout = setTimeout(func, ms)
     }
 }
 
@@ -62,13 +76,24 @@ function printMe10(msg) {
 function debounce3(func, ms) {
     let timeout;
     return function (...args) {
-        //console.log(this)
-        //console.log(timeout)
         //console.log(args)
         clearTimeout(timeout);
-        timeout = setTimeout(() => func.apply(this, args), ms) //Is 'this' a 'func'? What is context here?
+        //To catch args, apply() is used. "this" doesn't have context so it's "null".
+        timeout = setTimeout(() => func.apply(null, args), ms);
     }
 }
+
+/*
+// Same logic with call() instead of apply()
+function debounce3(func, ms) {
+    let timeout;
+    return function (...args) {
+        clearTimeout(timeout);
+        timeout = setTimeout(() => func.call(null, ...args), ms);
+    }
+}
+*/
+
 
 setTimeout(() => { console.log("\r\n--- Question c)---") }, 7000)
 const printMe3 = debounce3(printMe10, 7000)
